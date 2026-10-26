@@ -1,0 +1,432 @@
+/* =============================
+   Design Tokens
+   ============================= */
+:root {
+  --clr-bg: #f0f4f8;
+  --clr-surface: #ffffff;
+  --clr-surface-alt: #f8fafc;
+  --clr-primary: #6366f1;
+  --clr-primary-hover: #4f46e5;
+  --clr-primary-light: #e0e7ff;
+  --clr-danger: #f43f5e;
+  --clr-danger-hover: #e11d48;
+  --clr-success: #10b981;
+  --clr-text: #1e293b;
+  --clr-text-muted: #64748b;
+  --clr-border: #e2e8f0;
+  --clr-shadow: rgba(99, 102, 241, 0.10);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --transition: 0.2s ease;
+  --font: 'Inter', system-ui, sans-serif;
+}
+
+/* =============================
+   Reset & Base
+   ============================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =============================
+   App Shell
+   ============================= */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem 1rem 4rem;
+}
+
+/* =============================
+   Card / Container
+   ============================= */
+.card {
+  background: var(--clr-surface);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 4px 6px -1px rgba(0,0,0,0.06),
+    0 10px 40px -4px var(--clr-shadow);
+  width: 100%;
+  max-width: 640px;
+  overflow: hidden;
+}
+
+/* =============================
+   Header
+   ============================= */
+.app-header {
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+  padding: 2rem 2rem 1.5rem;
+  color: #fff;
+}
+
+.app-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.app-header .subtitle {
+  font-size: 0.875rem;
+  opacity: 0.85;
+}
+
+/* =============================
+   Stats Bar
+   ============================= */
+.stats-bar {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1rem 2rem;
+  background: var(--clr-surface-alt);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  color: var(--clr-text-muted);
+  font-weight: 500;
+}
+
+.stat .stat-value {
+  color: var(--clr-primary);
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.stat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--clr-border);
+}
+
+.stat-dot.done {
+  background: var(--clr-success);
+}
+
+/* =============================
+   Task Input
+   ============================= */
+.task-input-area {
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.input-row {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.task-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.task-input::placeholder {
+  color: var(--clr-text-muted);
+}
+
+.task-input:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px var(--clr-primary-light);
+  background: #fff;
+}
+
+.btn-add {
+  padding: 0.75rem 1.25rem;
+  background: var(--clr-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+}
+
+.btn-add:hover {
+  background: var(--clr-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.45);
+}
+
+.btn-add:active {
+  transform: translateY(0);
+}
+
+/* =============================
+   Filter Tabs
+   ============================= */
+.filters {
+  display: flex;
+  padding: 0.875rem 2rem;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--clr-border);
+  background: var(--clr-surface-alt);
+}
+
+.filter-btn {
+  padding: 0.35rem 0.875rem;
+  border: 1.5px solid var(--clr-border);
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--font);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: var(--clr-primary);
+  color: var(--clr-primary);
+  background: var(--clr-primary-light);
+}
+
+.filter-btn.active {
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+/* =============================
+   Task List
+   ============================= */
+.task-list {
+  list-style: none;
+  padding: 0.5rem 0;
+  min-height: 60px;
+}
+
+.task-list-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  color: var(--clr-text-muted);
+  gap: 0.75rem;
+}
+
+.empty-icon {
+  font-size: 2.5rem;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+/* =============================
+   Task Item
+   ============================= */
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.875rem 2rem;
+  border-bottom: 1px solid var(--clr-border);
+  transition: background var(--transition);
+  animation: slideIn 0.22s ease both;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-item:hover {
+  background: var(--clr-surface-alt);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Checkbox */
+.task-checkbox-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.task-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--clr-border);
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.task-checkbox:checked + .checkbox-custom {
+  background: var(--clr-success);
+  border-color: var(--clr-success);
+}
+
+.checkbox-custom svg {
+  display: none;
+  width: 12px;
+  height: 12px;
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.task-checkbox:checked + .checkbox-custom svg {
+  display: block;
+}
+
+.checkbox-custom:hover {
+  border-color: var(--clr-success);
+  background: #d1fae5;
+}
+
+/* Task Text */
+.task-text {
+  flex: 1;
+  font-size: 0.9375rem;
+  color: var(--clr-text);
+  transition: color var(--transition);
+  word-break: break-word;
+}
+
+.task-item.completed .task-text {
+  color: var(--clr-text-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--clr-text-muted);
+}
+
+/* Delete Button */
+.btn-delete {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  color: var(--clr-text-muted);
+  cursor: pointer;
+  opacity: 0;
+  transition: all var(--transition);
+}
+
+.task-item:hover .btn-delete {
+  opacity: 1;
+}
+
+.btn-delete:hover {
+  background: #ffe4e6;
+  color: var(--clr-danger);
+}
+
+.btn-delete:active {
+  transform: scale(0.9);
+}
+
+/* =============================
+   Footer
+   ============================= */
+.app-footer {
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+  text-align: center;
+}
+
+/* =============================
+   Responsive
+   ============================= */
+@media (max-width: 480px) {
+  .app {
+    padding: 1.25rem 0.75rem 3rem;
+  }
+
+  .app-header {
+    padding: 1.5rem 1.25rem 1.25rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .task-input-area,
+  .filters,
+  .stats-bar {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .task-item {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .btn-delete {
+    opacity: 1;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+  }
+}
